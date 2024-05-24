@@ -1,0 +1,90 @@
+{include file="public/header" title="分组管理" /}
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+        	<div class="checkDiv">
+            	<div class="fl"><input type="button" value="新 增" class="btn addBtn" onclick="rowUpdateClicked('', '');ShowDiv('MyUpdateDiv','fade')" /></div>
+                <div class="fr"><input type="hidden" class="text textHe2" /><input type="hidden" value="查 询" class="btn infoBtn mar3" /></div>
+            </div>
+            <!--startprint-->
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table mar2">
+                <tr>
+                	<th><input type="checkbox" /></th>
+                    <th>编号</th>
+                    <th>战队名称</th>
+                    <th>操作</th>
+                </tr>
+            {foreach $list as $key=>$vo } 
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>{$vo.group_id}</td>
+                    <td>{$vo.group_name}</td>
+                    <td><a href="javascript:void(0);" title="修改" class="edit" onclick="rowUpdateClicked('{$vo.group_name}', '{$vo.group_id}');ShowDiv('MyUpdateDiv','fade')">&nbsp;</a><a href="javascript:void(0);" title="删除" class="del" onclick="rowClicked('{$vo.group_name}', '{$vo.group_id}');ShowDiv('MyDelDiv','fade')">&nbsp;</a></td>
+                </tr>
+            {/foreach}
+            </table>
+			{:$list->render()}
+            
+            
+            <!--弹出层时背景层DIV-->
+            <div id="fade" class="black_overlay">
+            </div>
+            <div id="MyUpdateDiv" class="white_content">
+                <div class="out_title"><p class="fl">提示</p><a href="#" class="close fr" onclick="CloseDiv('MyUpdateDiv','fade')" title="关闭">&nbsp;</a></div>
+                <div class="out_content">
+                    <h3><img src="" class="out_inpor" alt="&nbsp;"/><p class="prompt">添加或修改？</p></h3>
+                </div>
+                <form action='{:url('index/grouplist/update')}' method='post'>
+                    <input type="text" id="input_update_desc" name="group_name" class="form-control" placeholder="小组名称" value=''>
+                    <input type="text" id="input_update_id" name="group_id" class="form-control" style="display: none" placeholder="战队id" value='' readonly>
+                    <div class="out_info">
+                        <div class="fr"><input type="submit" value="确&nbsp;定" class="btn infoBtn" /><input type="button" value="取&nbsp;消" class="btn defultBtn mar3" onclick="CloseDiv('MyUpdateDiv','fade')" /></div>
+                    </div>
+                </form>
+            </div>
+            <div id="MyDelDiv" class="white_content">
+                <div class="out_title"><p class="fl">提示</p><a href="#" class="close fr" onclick="CloseDiv('MyDelDiv','fade')" title="关闭">&nbsp;</a></div>
+                <div class="out_content">
+                    <h3><img src="" class="out_inpor" /><p class="prompt">确定要删除此项？</p></h3>
+                </div>
+                <form action='{:url('index/grouplist/delete')}' method='post'>
+                    <input type="text" id="input_del_desc" name="ask" class="form-control" style="display: none" placeholder="题目" value='' readonly>
+                    <input type="text" id="input_del_id" name="group_id" class="form-control" style="display: none" placeholder="题目id" value='' readonly>
+                    <div class="out_info">
+                        <div class="fr"><input type="submit" value="确&nbsp;定" class="btn infoBtn" /><input type="button" value="取&nbsp;消" class="btn defultBtn mar3" onclick="CloseDiv('MyDelDiv','fade')" /></div>
+                    </div>
+                </form>
+            </div>
+            <div id="MyDiv" class="white_content">
+            	<div class="out_title"><p class="fl">提示</p><a href="#" class="close fr" onclick="CloseDiv('MyDiv','fade')" title="关闭">&nbsp;</a></div>
+                <div class="out_content">
+                	<h3><img src="" class="out_inpor" /><p class="prompt">确定要删除全部项？</p></h3>
+                </div>
+                <div class="out_info">
+                	<div class="fr"><input type="button" value="确&nbsp;定" class="btn infoBtn" /><input type="button" value="取&nbsp;消" class="btn defultBtn mar3" /></div>
+                </div>
+            </div>
+
+            <!--endprint-->
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" menu_sel="menu_sel3" /}
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        rowClicked=function(group_name, group_id){
+            console.log('rowClicked');
+            $("#input_del_desc").val(group_name);
+            $("#input_del_id").val(group_id);
+        },
+        rowUpdateClicked=function(group_name, group_id){
+            console.log('rowClicked');
+            $("#input_update_desc").val(group_name);
+            $("#input_update_id").val(group_id);
+        }
+    })
+</script>
+</html>

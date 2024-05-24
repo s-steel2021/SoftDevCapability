@@ -1,0 +1,32 @@
+{include file="public/header" title="后台管理-基础设置" /}
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+
+        	<div class="editBox">
+        	<form action="{:url('index/setting/save')}" method="post">
+            	<ul class="mar4">
+                	<li>
+                		<strong>&nbsp;</strong>
+						<label><input id="idSwitch" name="chkSwitch"  type="checkbox" {$switch} />显示公告</label>
+                    </li>
+                	<li>
+                		<strong>&nbsp;</strong>
+                    	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="txtContent" type="text" maxlength="20" class="text textHe1" value="{$content}" placeholder="公告内容">
+                    	 </li>
+                	<li>
+                    	 <strong>&nbsp;</strong>
+                         <span class="right_form"><input type="submit" class="btn infoBtn mar8" value="保&nbsp;存" /></span>
+                    </li>
+                </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" menu_sel="menu_sel6" /}
+
+</body>
+</html>

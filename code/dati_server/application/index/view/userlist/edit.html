@@ -1,0 +1,69 @@
+{include file="public/header" title="人员管理" /}
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+            <div class="mar4 dh"><a href="#" class="font_col">首页</a>
+            ><a href="#" class="font_col">人员管理</a>>
+            <a href="#" class="font_col3">编辑</a>
+            </div>
+          
+	        	<div class="editBox">
+	        	  <form action="{:url('index/userlist/doedit')}" method="post">
+	            	<ul class="mar4">
+	                	<li>
+							<strong>编号：</strong>
+	                		<span class="right_form font_col">{$user_id}</span>
+							<input type="hidden" name="user_id" value="{$user_id}" />
+	                    </li>
+	                	<li>
+							<strong>openid：</strong>
+	                		<span class="right_form font_col">{$openid}</span>
+	                    </li>
+	                	<li>
+							<strong>昵称：</strong>
+	                		<span class="right_form font_col">{$nick_name}</span>
+	                    </li>
+	                	<li>
+							<strong>头像：</strong>
+	                		<span class="right_form font_col">
+	                		<img class="imgheader" src="{$avatar_url}"  alt="{$nick_name}" />
+	                		</span>
+	                    </li>
+	                	<li>
+							<strong>组id：</strong>
+	                		<span class="right_form font_col">{$group_id}</span>
+	                    </li>
+	                	<li>
+							<strong>小组：</strong>
+	                		<span class="right_form font_col">
+	                		<select id="selgroup" name="selgroup" class="myselect"> 
+	                		{volist  name="grouplist" id="group"}
+								<option value="{$group.group_id}">{$group.group_name}</option> 
+							{/volist}
+							</select> 
+	                		
+	                		</span>
+	                    </li>
+
+	                	<li>
+	                    	 <strong>&nbsp;</strong>
+	                         <span class="right_form"><input type="submit" class="btn infoBtn mar8" value="确&nbsp;定" /></span>
+	                    </li>
+	                </ul>
+	                </form>	        	
+	            </div>
+            
+        </div>
+    </div>
+</div>
+{include file="public/footer" menu_sel="menu_sel2" /}
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	var checkValue={$group_id};
+    	$('#selgroup').val(checkValue);    	
+    })
+
+</script>
+</html>

@@ -1,0 +1,74 @@
+{include file="public/header" title="问答管理" /}
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+            <div class="mar4 dh"><a href="#" class="font_col">首页</a>
+            ><a href="#" class="font_col">问答管理</a>>
+            <a href="#" class="font_col3">新增问题</a>
+            </div>
+          
+	        	<div class="editBox">
+	        	  <form action="{:url('index/questionlist/doedit')}" method="post">
+	            	<ul class="mar4">
+	                	<li>
+							<strong>编号：</strong>
+	                		<span class="right_form font_col">{$question_id}</span>
+							<input type="hidden" name="question_id" value="{$question_id}" />
+	                    </li>
+	                	<li>
+	                    	 <strong>问题描述:</strong>
+	                         <span class="right_form">
+	                         	<textarea name="ask" rows="3" cols="50" maxlength="100">{$ask}</textarea>
+	                         	<em class="error">最多为50字，推荐30字左右</em>
+	                         </span>
+	                    </li>
+	                    <li></li>
+	                    <li></li>
+	                    <li></li>
+	                	<li>
+	                    	 <strong>答案A</strong>
+	                         <span class="right_form"><input type="text" class="text textHe1" name="answer_a" maxlength="50" value="{$answer_a}" /><em class="error">推荐5个字左右</em></span>
+	                    </li>
+	                	<li>
+	                    	 <strong>答案B</strong>
+	                         <span class="right_form"><input type="text" class="text textHe1" name="answer_b" maxlength="50"  value="{$answer_b}" /><em class="error">推荐5个字左右</em></span>
+	                    </li>
+	                	<li>
+	                    	 <strong>答案C</strong>
+	                         <span class="right_form"><input type="text" class="text textHe1" name="answer_c" maxlength="50"  value="{$answer_c}" /><em class="error">推荐5个字左右</em></span>
+	                    </li>
+	                	<li>
+	                    	 <strong>答案D</strong>
+	                         <span class="right_form"><input type="text" class="text textHe1" name="answer_d" maxlength="50"  value="{$answer_d}" /><em class="error">推荐5个字左右</em></span>
+	                    </li>                                        
+	                	<li>
+	                    	 <strong>正确答案</strong>
+	                         <span class="right_form">
+	                         	<a href="#" class="radioA"><input type="radio" checked="checked" name="answer_right" value="0"/>答案A</a>
+	                         	<a href="#" class="radioA"><input type="radio"  name="answer_right" value="1"/>答案B</a>
+	                         	<a href="#" class="radioA"><input type="radio"  name="answer_right" value="2" />答案C</a>
+	                         	<a href="#" class="radioA"><input type="radio"  name="answer_right" value="3" />答案D</a>
+	                         </span>
+	                    </li>
+	                	<li>
+	                    	 <strong>&nbsp;</strong>
+	                         <span class="right_form"><input type="submit" class="btn infoBtn mar8" value="确&nbsp;定" /></span>
+	                    </li>
+	                </ul>
+	                </form>	        	
+	            </div>
+            
+        </div>
+    </div>
+</div>
+{include file="public/footer" menu_sel="menu_sel4" /}
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	var sel = {$answer_right};
+    	$('input:radio').eq(sel).attr('checked', 'true');    	
+    })
+
+</script>
+</html>

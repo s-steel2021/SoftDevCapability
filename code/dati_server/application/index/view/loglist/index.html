@@ -1,0 +1,48 @@
+{include file="public/header" title="日志管理" /}
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+
+            <!--startprint-->
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table mar2">
+                <tr>
+                	<th><input type="checkbox" /></th>
+                    <th>编号</th>
+                    <th>openid</th>
+                    <th>msg</th>
+                    <th>创建时间</th>
+                </tr>
+            {foreach $list as $key=>$vo } 
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>{$vo.log_id}</td>
+                    <td>{$vo.openid}</td>
+                    <td>{$vo.msg}</td>
+                    <td>{$vo.log_date}</td>
+                </tr>
+            {/foreach}
+            </table>
+            {:$list->render()}
+
+            <!--弹出层时背景层DIV-->
+            <div id="fade" class="black_overlay">
+            </div>
+            <div id="MyDiv" class="white_content">
+            	<div class="out_title"><p class="fl">提示</p><a href="#" class="close fr" onclick="CloseDiv('MyDiv','fade')" title="关闭">&nbsp;</a></div>
+                <div class="out_content">
+                	<h3><img src="" class="out_inpor" /><p class="prompt">确定要删除此项？</p></h3>
+                </div>
+                <div class="out_info">
+                	<div class="fr"><input type="button" value="确&nbsp;定" class="btn infoBtn" /><input type="button" value="取&nbsp;消" class="btn defultBtn mar3" /></div>
+                </div>
+            </div>
+
+            <!--endprint-->
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" menu_sel="menu_sel5" /}
+</body>
+</html>

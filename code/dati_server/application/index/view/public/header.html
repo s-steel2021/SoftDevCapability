@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT"> 
+<meta HTTP-EQUIV="expires" CONTENT="0">
+
+<title>[title]</title>
+<!-- Bootstrap -->
+<link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__STATIC__/styles/common.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/scripts/lib/Tip/tip-yellow.css"/>
+<script type="text/javascript" src="__STATIC__/scripts/lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="__STATIC__/scripts/lib/Tip/jquery.poshytip.min.js"></script>
+<script type="text/javascript" src="__STATIC__/scripts/index.js"></script>
+
+</head>
+
+<body>
+<div class="nav">
+	<div class="nav_main">
+    	<div class="fl"><a href="#" class="nav_name">admin</a><a href="{:url('index/index/logout')}" class="cancel">注销</a></div>
+    	<div class="fr">
+        	<a href="#" class="set">设置</a><a href="#" class="help">帮助中心</a>
+        </div>
+    </div>
+</div>
+<div class="menu_box">
+	<div class="div">
+        <div class="logo fl">
+        	<a href="#"><img src="__STATIC__/images/logo.png" /></a>
+        </div>
+        <div class="menu fr">
+            <ul>
+            <!--  class="onA" -->
+                <li><a id="menu_sel1" href="{:url('index/index/index')}">首页</a></li>
+                <li><a id="menu_sel2"  href="{:url('index/userlist/index')}">人员管理</a></li>
+                <li><a id="menu_sel3"  href="{:url('index/grouplist/index')}">小组管理</a></li>
+                <li><a id="menu_sel4"  href="{:url('index/questionlist/index')}">问答管理</a></li>
+                <li><a id="menu_sel5"  href="{:url('index/loglist/index')}">日志查看</a></li>
+                <li><a id="menu_sel6"  href="{:url('index/setting/index')}">基础设置</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

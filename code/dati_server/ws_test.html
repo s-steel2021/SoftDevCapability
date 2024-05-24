@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Websocket Test</title>
+<style type="text/css">
+.textarea{
+	margin:20px auto ;
+}
+
+</style>
+</head>
+<body>
+	<h2>Websocket Test Panel</h2>
+	<div>
+		<input type="button" value="new websocket" onclick="connect();" /><br/>
+		<textarea id="textareaContent" rows="10" cols="100">
+{
+  "socketCmd": 100,
+  "socketAction": "match_room",
+  "data": {
+    "openid": "1234" 
+  }, 
+  "version": 1
+}
+		</textarea>
+		<span><input type="button" value="send msg to server" onclick="dosend();" />
+		</span>
+		
+	</div>
+	<div>
+		<textarea id="textareaLog" rows="20" cols="150"></textarea>
+	</div>
+	
+	<div>
+	   <h3>test updateUserInfo</h3>
+	   <form action="http://localhost/dati/public/index.php/wxapi/index/updateUserInfo"  method="post">
+	   	<input type="text" name="openid" value="yyyy" />
+	   	<input type="text" name="nickname" value="tony" />
+	   	<input type="text" name="AvatarUrl" value="http://" />
+	     <input type="submit" name="" value="submit" />
+	   </form>
+	</div>
+	
+	<script>
+		var ws;
+		function connect(){
+			ws = new WebSocket("wss://www.bfytech.com:9001");//127.0.0.1
+			//ws = new WebSocket("ws://www.bfytech.com:2345");//127.0.0.1
+			ws.onopen = function() {
+			    addlog("连接成功");
+			    ws.send('test');
+			    addlog("给服务端发送一个字符串：test");
+			};
+			ws.onmessage = function(e) {
+				addlog("收到服务端的消息：" + e.data);
+			};
+			
+			
+		} 
+		function dosend(){
+			if (typeof ws==="undefined")
+				alert("ws未初始化");
+			else {
+				var ele = document.getElementById("textareaContent");
+				ws.send(ele.value);
+				addlog("已经ws.send(),长度"+ele.value.length);				
+			}
+
+		}
+		function addlog(content){
+			var ele = document.getElementById("textareaLog");
+
+			ele.value = ele.value +  content +"\r\n" ;
+		}
+	
+	</script>
+</body>
+</html>

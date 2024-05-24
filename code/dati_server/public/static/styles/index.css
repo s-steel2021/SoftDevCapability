@@ -1,0 +1,144 @@
+/* CSS Document */
+.tree{border-right:1px solid #f4f4f4; width:200px; min-height:330px; padding:15px 15px 15px 5px; color:#666;}
+.tree div{padding-left:15px; height:30px; line-height:30px; cursor:pointer; margin-bottom:5px;}
+.tree div:hover{background-color:#f7f7f7; border-radius:5px;}
+
+.tree div:hover .tree_area{background:url(../images/pic.png) no-repeat -171px -128px;}
+.tree div:hover .tree_city{background:url(../images/pic.png) no-repeat -171px -101px;}
+.tree div:hover .tree_circle{background:url(../images/pic.png) no-repeat -171px -156px;}
+
+.tree_area{background:url(../images/pic.png) no-repeat -171px -44px; width:16px; height:16px;padding-right:10px; padding-top:10px;}
+.tree_city{background:url(../images/pic.png) no-repeat -171px -17px; width:16px; height:16px;padding-right:10px; padding-top:10px;}
+.tree_circle{background:url(../images/pic.png) no-repeat -171px -72px; width:16px; height:16px;padding-right:10px; padding-top:10px;}
+
+.tree_city_hover{background:url(../images/pic.png) no-repeat -161px -17px;}
+.tree_area_hover{background:url(../images/pic.png) no-repeat -161px -72px;}
+.tree_circle_hover{background:url(../images/pic.png) no-repeat -161px -44px;}
+
+.tree_city_chec{background:url(../images/pic.png) no-repeat -161px -17px;}
+.tree_area_chec{background:url(../images/pic.png) no-repeat -161px -211px; color:#fff;}
+.tree_circle_chec{background:url(../images/pic.png) no-repeat -161px -44px;}
+
+.tree_chec{background-color:#a1dd9f !important; border-radius:5px; color:#fff;}
+.tree_chec span{background:url(../images/pic.png) no-repeat -171px -211px !important;}
+
+.tree_edit{min-height:360px;}
+
+/*-----右键-------*/
+.right_area{width:110px; padding:5px 0; display:none; border:1px solid #ddd; box-shadow:0 0 6px #ddd; background-color:#fff; z-index:99; position:absolute; border-radius:4px;}
+.right_area_pos{position:relative;}
+.right_area a{display:block; height:30px; text-align:center;}
+.right_area .right_add{border-bottom:1px solid #eee; background:url(../images/pic.png) no-repeat 95px -204px;}
+.right_area .right_add:hover{background-image:url(../images/pic.png); background-position:95px -182px; background-repeat:no-repeat;}
+.right_area .right_add_div{display:block; width:110px; top:0; left:111px; position:absolute; box-shadow:0 0 6px #ddd; background-color:#fff; z-index:99; border-radius:0 4px 4px 0; padding:5px 0;}
+.right_area .right_add_div span{width:110px; height:30px; text-align:center; display:block;}
+.right_area .right_add_div span:hover{background:#3498db; color:#fff;}
+.right_area a:hover{background:#3498db; color:#fff;}
+
+.info_ul{width:140px; border:1px solid #ddd; margin-left:10px; margin-top:10px; padding-bottom:10px; border-radius:4px; box-shadow:0 0 6px #ddd;}
+.info_ul li{width:120px; text-align:center; margin-left:10px; padding-top:0 !important; height:30px !important; line-height:30px !important;}
+.info_ul li a{width:120px; height:30px; display:block;}
+.info_ul li a:hover{background-color:#fafafa;}
+.info_ul li img{width:16px; vertical-align:-2px; margin-right:5px;}
+.sl_pic{height:80px; margin:10px 0;}
+
+.explain{clear:both; width:500px; padding-left:20px;}
+.explain p{line-height:23px;}
+
+.frame1{
+	width:100%;
+	heigth:100%;
+	
+}
+.center{
+	display:flex;
+	flex-direction:column;
+	margin:15px 15px;
+	border:1px solid #d9d9d9;
+}
+
+.header{
+	display:flex;
+	flex-direction:row;
+	/* justify-content:space-between; */
+	background-color:#0000ff;
+	border:1px solid #d9d9d9;
+	color:white;
+	text-align:center;
+	font-size:18px;
+}
+.header a{
+	text-decoration:none;
+	out-line:none;
+	color:white;
+}
+.top-btn{
+	min-width:50px;
+	min-height:35px;
+	padding:10px 15px;
+}
+.title1{
+	border:1px solid #d9d9d9;
+	text-align:left;
+	padding:10px 15px;
+	font-size:18px;
+}
+.content{
+	border:0px solid #d9d9d9;
+	text-align:center;
+	padding:8px;
+}
+.content1{
+	/*background-color:#00df00;*/
+	border:1px solid #d9d9d9;
+	
+}
+.single{
+	background-color:#f2f2f2;
+}
+.double{
+	
+}
+table#table1{
+	border-collapse: collapse;
+	border:1px solid #d9d9d9;
+	width:100%;
+	font-size:14px;
+}
+talbe{
+	
+
+	
+}
+th,td{
+	padding:5px 15px;
+}
+
+#btnPauseGame{
+	margin-left:200px;
+}
+
+.imgheader{
+	width:32px;
+	height:32px;
+}
+.myselect{
+	width:200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

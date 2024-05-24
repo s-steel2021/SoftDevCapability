@@ -1,0 +1,174 @@
+{include file="public/header" title="后台管理-首页" /}
+
+<div class="main">
+    <div class="div mar1">
+
+        <div class="right_box fl">
+
+            				   		<div class="content">
+				   			<div class="content1">
+					   			<table id="table1">
+
+					   				<tr class="double">
+					   					<td>当前用户数量</td>
+					   					<td>{$user_num}</td>
+					   				</tr>
+					   				<tr class="single">
+					   					<td>当前分组数量</td>
+					   					<td>{$group_num}</td>
+					   				</tr>
+					   				<tr class="double">
+					   					<td>当前问答题数量</td>
+					   					<td>{$ques_num}</td>
+					   				</tr>	
+					   				<tr class="single">
+					   					<td>比赛次数</td>
+					   					<td>{$result_num}</td>
+					   				</tr>
+					   				<tr class="double">
+					   					<td>训练次数</td>
+					   					<td>{$train_num}</td>
+					   				</tr>	
+   						   						   						   					   				
+					   			</table>
+				   			</div>
+				   		</div>
+        	<div class="editBox">
+            	<ul class="mar4">
+
+  
+                	<li>
+                    	 <strong>&nbsp;</strong>
+                         <span class="right_form"><input id="btncleardata" type="button" class="btn infoBtn mar8" value="清空比赛数据" onclick="ShowCreateModal('危险操作！');"/></span>
+                         <span class="right_form"><input id="btnPauseGame" type="button" class="btn infoBtn mar8" value="启动/暂停比赛"  /></span>
+                         <span>状态:</span><span id="noteGameStatus">进行中</span>
+                    </li>
+					<li>{$gamestatus}</li>
+                </ul>
+                <!--  bootstrap dialog begin -->
+					<div class="modal fade" id="createFileMModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="createFileTitle">确认清除</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <form>
+					          <div class="form-group">
+					            <label for="fileName" class="col-form-label">输入密码，确认清除比赛数据！（慎重！比赛数据无法恢复！需要暂停游戏1分钟后才能进行该操作。）</label>
+					            <input type="text" autofocus class="form-control" id="txtfileName">
+					          </div>
+					        </form>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" id="createFileSureBut">确定</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					            
+                <!--  bootstrap dialog end. -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" menu_sel="menu_sel1" /}
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script src="__STATIC__/js/jquery.min.js"></script>
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script src="__STATIC__/js/bootstrap.min.js"></script>
+<script>
+	// 修改弹出框的title, 显示弹框
+	function ShowCreateModal(title){
+	    $("#createFileTitle").text(title);
+	    $('#createFileMModal').modal('show');
+	}
+	function setGameStatusText(status){
+		if (status==0)
+			txt="暂停";
+		else if (status==1)
+			txt="进行中";
+		else
+			txt ="未知";
+
+		$("#noteGameStatus").text(txt);		
+	}
+	function showGameStatus(){
+			$.ajax({
+				url:"{:url('wxapi/index/getGameStatus')}",
+				data:{"id":"123"},
+				cache:"false",
+				async:"true",
+				dataType:"json",
+				type:"get",
+				success:function(ret){
+					setGameStatusText(ret);
+					
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log('getGameStatus fail');
+				}
+				});	  		
+	}
+	//显示比赛状态
+	$(document).ready(function(){
+		//showGameStatus();
+		var ret = {$gamestatus};
+		setGameStatusText(ret);
+	})
+	// 关闭弹框， 获取输入值，然后执行逻辑
+	$("#createFileSureBut").click(function (){
+	    $("#createFileMModal").modal("hide");
+	    var inputFileName = $("#txtfileName").val();
+	    
+	    console.log("input file name : " + inputFileName);
+	    if (inputFileName=="admin"){
+  			$.ajax({
+				url:"{:url('index/index/cleardb')}",
+				data:{"id":"123"},
+				cache:"false",
+				async:"true",
+				dataType:"json",
+				type:"post",
+				success:function(ret){
+					alert("操作完毕！");
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown) {
+
+					alert("操作失败");
+				}
+				});	    	
+	    }else
+	    	alert('密码错误');
+	});
+
+	$("#btnPauseGame").click(function (){
+		if (confirm("确认要暂停/启动比赛？")){
+  			$.ajax({
+				url:"{:url('index/index/switchGameStart')}",
+				data:{"id":"123"},
+				cache:"false",
+				async:"true",
+				dataType:"json",
+				type:"get",
+				success:function(ret){
+					showGameStatus();
+					alert("操作完毕！");
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown) {
+					
+					alert("操作失败");
+
+				}
+				});	    	
+		}
+	});
+	
+</script>
+
+</body>
+</html>
